@@ -1,0 +1,115 @@
+/*
+Represents a player enrolled in the coaching clinic.
+*/
+CREATE TABLE Player(
+	playerID    INT NOT NULL, -- Surrogate key to keep the primary key of player simple.
+    pLastName VARCHAR(25) NOT NULL,-- The last name of the player (part of the candidate key).
+    pFirstName VARCHAR(25) NOT NULL, -- The first name of the player (part of the candidate key).
+	pDateOfBirth DATE NOT NULL,-- The date of birth of the player (part of the candidate key).
+    dateJoined DATE NOT NULL, -- The date that the player joined the clinic.
+    pEmail VARCHAR(55) NOT NULL, -- The player's email address.
+
+	CONSTRAINT PLAYER_CK1 UNIQUE(pLastName,pFirstName,pDateOfBirth,dateJoined), -- player first candidate key
+    CONSTRAINT PLAYER_CK2 UNIQUE(pEmail), -- player second candidate key
+	CONSTRAINT PLAYER_PK PRIMARY KEY (playerID) -- Primary Key constraing of a player.
+);
+
+/*
+Represents a sport offered at the coaching clinic.
+*/
+CREATE TABLE Sport(
+    sportName VARCHAR(25) NOT NULL,-- The name of the sport that will be coached.
+
+	CONSTRAINT PK_SPORT PRIMARY KEY (sportName) -- Primary Key Constraint of a Sport.
+);
+
+/*
+Represents a coach in the coaching clinic.
+*/
+CREATE TABLE Coach(
+    employeeID    INT NOT NULL, -- Surrogate key to keep the primary key of coach simple.
+    cLastName VARCHAR(25) NOT NULL, -- The coach’s last name.
+    cFirstName VARCHAR(25) NOT NULL, -- The coach’s first name.
+    coachEmail VARCHAR(55) NOT NULL, -- The coach’s email address.
+
+	CONSTRAINT COACH_CK UNIQUE(coachEmail),-- coach candidate key
+    CONSTRAINT COACH_PK PRIMARY KEY(employeeID) -- Primary Key Constraint of a Coach.
+);
+
+/*
+Some skill that a person can possess.
+*/
+CREATE TABLE Skill(
+    skillName VARCHAR(25) NOT NULL, -- A name of a particular skill a coach has.
+
+    CONSTRAINT SKILL_PK PRIMARY KEY(skillName) -- Primary Key Constraint of a Skill.
+);
+
+/*
+A particular skill that a Coach possesses.
+*/
+CREATE TABLE CoachSkill(
+	employeeID    INT NOT NULL, -- Migrating foreign key from Coach.
+    skillName VARCHAR(25) NOT NULL, -- Migrating foreign key from Skill.
+
+    CONSTRAINT SKILL_PK PRIMARY KEY(employeeID, skillName), -- Primary Key Constraint of a CoachSkill.
+    CONSTRAINT COACHSKILL_FK1 FOREIGN KEY (employeeID) REFERENCES Coach (employeeID), -- Migrating foreign key constraint for employeeID from Coach.
+    CONSTRAINT COACHSKILL_FK2 FOREIGN KEY (skillName) REFERENCES Skill (skillName) -- Migrating foreign key constraint for skillName from Skill.
+);
+
+/*
+Represents a head coach at this particular coaching clinic.
+*/
+CREATE TABLE HeadCoach(
+	employeeID    INT NOT NULL, -- A headcoach's employeeID. 
+	hcLastName  VARCHAR(25) NOT NULL, -- The head coach’s last name.
+    hcFirstName VARCHAR(25) NOT NULL, -- The head coach’s first name.
+    headlineSkill VARCHAR(25) NOT NULL, -- A headcoach's headline skill.
+
+    CONSTRAINT HEADCOACH_PK PRIMARY KEY(employeeID), -- Primary Key Constraint of a HeadCoach.
+    CONSTRAINT HEADCOACH_FK1 FOREIGN KEY (employeeID) REFERENCES Coach (employeeID), -- Migrating foreign key constraint for employeeID from Coach.
+	CONSTRAINT HEADCOACH_FK2 FOREIGN KEY (employeeID, headlineSkill) REFERENCES CoachSkill (employeeID, skillName) -- Migrating foreign key constraint for employeeID and headlineSkill from CoachSkill.
+);
+
+/*
+Represents an assistant coach at this particular coaching clinic.
+*/
+CREATE TABLE AssistantCoach(
+	employeeID    INT NOT NULL, -- An assistant coach's employeeID. 
+    acLastName  VARCHAR(25) NOT NULL, -- The assistant coach’s last name.
+    acFirstName VARCHAR(25) NOT NULL, -- The assistant coach’s first name.
+    mentor 		  INT NOT NULL, -- An assistant coach's mentor.
+
+    CONSTRAINT ASSISTANTCOACH_PK PRIMARY KEY(employeeID), -- Primary Key Constraint of an AssistantCoach.
+    CONSTRAINT ASSISTANTCOACH_FK1 FOREIGN KEY (employeeID) REFERENCES Coach (employeeID), -- Migrating foreign key constraint for employeeID from Coach.
+    CONSTRAINT ASSISTANTCOACH_FK2 FOREIGN KEY (mentor) REFERENCES Coach (employeeID) -- Migrating foreign key constraint for mentor from Coach.
+);
+
+/*
+Represents a sport that is coached by a certain coach.
+*/
+CREATE TABLE SportCoach(
+    sportName	VARCHAR(25) NOT NULL, -- The sport's name that the coach is coaching.
+	employeeID    INT NOT NULL, -- The employeeID of the coach that is coaching this sport.
+
+    CONSTRAINT SPORTCOACH_PK PRIMARY KEY(sportName, employeeID), -- Primary Key Constraint of a SportCoach.
+    CONSTRAINT SPORTCOACH_FK1 FOREIGN KEY (sportName) REFERENCES Sport (sportName), -- Migrating foreign key constraint for sportName from Sport.
+    CONSTRAINT SPORTCOACH_FK2 FOREIGN KEY (employeeID) REFERENCES Coach (employeeID) -- Migrating foreign key constraint for employeeID from Coach.
+);
+
+/*
+Represents a player that is participating in a particular sport.
+*/
+CREATE TABLE SportPlayer(
+	playerID    INT NOT NULL, -- The player ID of the player participating in a sport.
+	spLastName VARCHAR(25) NOT NULL,-- The last name of the sportplayer.
+    spFirstName VARCHAR(25) NOT NULL, -- The first name of the sportplayer.
+    sportName	VARCHAR(25) NOT NULL, -- The sport's name that the player is participating in.
+	employeeID    INT NOT NULL, -- The employeeID of the coach that is coaching this player.
+
+    CONSTRAINT SPORTPLAYER_PK PRIMARY KEY(playerID, sportName, employeeID), -- Primary Key Constraint of a SportPlayer.
+    CONSTRAINT SPORTPLAYER_FK1 FOREIGN KEY (playerID) REFERENCES Player (playerID), -- Migrating foreign key constraint for playerID from Player.
+    CONSTRAINT SPORTPLAYER_FK2 FOREIGN KEY (sportName) REFERENCES Sport (sportName), -- Migrating foreign key constraint for sportName from Sport.
+    CONSTRAINT SPORTPLAYER_FK3 FOREIGN KEY (sportName, employeeID) REFERENCES SportCoach (sportName, employeeID), -- Migrating foreign key constraint for sportName and employeeID from SportCoach.
+	CONSTRAINT SPORTPLAYER_FK4 FOREIGN KEY (employeeID) REFERENCES HeadCoach (employeeID) -- Migrating foreign key constraint for employeeID from HeadCoach.
+);

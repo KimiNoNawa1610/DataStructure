@@ -1,0 +1,462 @@
+ant -f "E:\\JDBC 323" -Dnb.internal.action.name=run run
+init:
+Deleting: E:\JDBC 323\build\built-jar.properties
+deps-jar:
+Updating property file: E:\JDBC 323\build\built-jar.properties
+compile:
+run:
+ Database Connected
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+1
+All writing groups:
+Group Name: Clamp | HeadWriter: Nanase Ohkawa | YearFormed: 1987 | Subject: Manga
+
+Group Name: Stratford-on-Odeon | HeadWriter: Ernest Hemingway | YearFormed: 1882 | Subject: Modern Literature
+
+Group Name: The Dymock Poets | HeadWriter: Robert Frost | YearFormed: 1911 | Subject: Poetry
+
+Group Name: The Bloomsbury Group | HeadWriter: Virginia Woolf | YearFormed: 1980 | Subject: Women
+
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+2
+The Names of all Writing Group:
+*Clamp
+
+*Stratford-on-Odeon
+
+*The Bloomsbury Group
+
+*The Dymock Poets
+
+Please enter the writing group name you want to have data:
+dqewq
+
+Error: Your group name does not exist in the database. Please enter again or type -1 to exit
+
+Clamp
+The data of the Clamp that you want:
+Writing Group Name: Clamp | Head Writer: Nanase Ohkawa | Year Formed: 1987 | Subject: Manga | Book Title: Cardcaptor Sakura | Year Published: 1999 | Page Number: 52 | Publisher Name: Viz Media | Publisher Address: 1355 Market St #200, San Francisco, CA 94103 | Publisher Phone: (415) 546-7073 | Publisher Email: sjsupport@viz.com
+
+Writing Group Name: Clamp | Head Writer: Nanase Ohkawa | Year Formed: 1987 | Subject: Manga | Book Title: Detective Conan | Year Published: 1998 | Page Number: 45 | Publisher Name: Viz Media | Publisher Address: 1355 Market St #200, San Francisco, CA 94103 | Publisher Phone: (415) 546-7073 | Publisher Email: sjsupport@viz.com
+
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+3
+Publisher Name: Kodansha | publisher Address: 2-12-21 Otowa,Bunkyo-ku Tokyo 112-8001 Japan | Publisher Phone: +81(3)5395-3576 | Publisher Email: janedoe@kodansha.co.jp
+
+Publisher Name: J.B. Lippincott & Co. | publisher Address: 227 S. 6th Street Philadelphia, PA 72845 | Publisher Phone: (215) 732-6200 | Publisher Email: JBLip@gmail.com
+
+Publisher Name: G. P. Putnams Sons | publisher Address: 375 Hudson Street New York, NY 10014 | Publisher Phone: 212-366-2000 | Publisher Email: janedoe@penguinputnam.com
+
+Publisher Name: Viz Media | publisher Address: 1355 Market St #200, San Francisco, CA 94103 | Publisher Phone: (415) 546-7073 | Publisher Email: sjsupport@viz.com
+
+Publisher Name: Shueisha | publisher Address: 3-13-10 Ginza, Chuo-ku, Tokyo 104-8003 | Publisher Phone: +81-3-3545-7111 | Publisher Email: info@toyokeizai.co.jp
+
+Publisher Name: Scholastic Corporation | publisher Address: 3010 Wilshire Blvd #258, Los Angeles, CA 90010 | Publisher Phone: 1 (866) 233-1692 | Publisher Email: ScC@gmail.com
+
+Publisher Name: Bloomsbury Publishing | publisher Address: 1385 Broadway, 5th Floor, New York, NY 10018 | Publisher Phone: +44 (0) 20 7631 5600 | Publisher Email: BP@gmail.com
+
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+4
+The Names of all Publishers:
+*Bloomsbury Publishing
+
+*G. P. Putnams Sons
+
+*J.B. Lippincott & Co.
+
+*Kodansha
+
+*Scholastic Corporation
+
+*Shueisha
+
+*Viz Media
+
+Please select a publilsher you want to know about
+qweqasd
+
+Error: Your publisher name does not exist in the database. Please enter again or type -1 to exit
+
+Viz Media
+The data of the publisher Viz Media that you want:
+Publisher Name: Viz Media | Publisher Address: 1355 Market St #200, San Francisco, CA 94103 | Publisher Phone: (415) 546-7073 | Publisher Email: sjsupport@viz.com | Writing Group Name: The Dymock Poets | Head Writer: Robert Frost | Year Formed: 1911 | Subject: Poetry | Book Title: New Hampshire | Year Published: 1923 | Page Number: 75
+
+Publisher Name: Viz Media | Publisher Address: 1355 Market St #200, San Francisco, CA 94103 | Publisher Phone: (415) 546-7073 | Publisher Email: sjsupport@viz.com | Writing Group Name: Clamp | Head Writer: Nanase Ohkawa | Year Formed: 1987 | Subject: Manga | Book Title: Cardcaptor Sakura | Year Published: 1999 | Page Number: 52
+
+Publisher Name: Viz Media | Publisher Address: 1355 Market St #200, San Francisco, CA 94103 | Publisher Phone: (415) 546-7073 | Publisher Email: sjsupport@viz.com | Writing Group Name: Stratford-on-Odeon | Head Writer: Ernest Hemingway | Year Formed: 1882 | Subject: Modern Literature | Book Title: Ohio | Year Published: 1958 | Page Number: 156
+
+Publisher Name: Viz Media | Publisher Address: 1355 Market St #200, San Francisco, CA 94103 | Publisher Phone: (415) 546-7073 | Publisher Email: sjsupport@viz.com | Writing Group Name: Clamp | Head Writer: Nanase Ohkawa | Year Formed: 1987 | Subject: Manga | Book Title: Detective Conan | Year Published: 1998 | Page Number: 45
+
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+5
+All the book titles:
+Book Title: The Old Man And The Sea | Publisher Name: J.B. Lippincott & Co. | Writing Group Name: Stratford-on-Odeon
+
+Book Title: A Boy Will | Publisher Name: G. P. Putnams Sons | Writing Group Name: The Dymock Poets
+
+Book Title: New Hampshire | Publisher Name: Viz Media | Writing Group Name: The Dymock Poets
+
+Book Title: Farewell to Arms | Publisher Name: G. P. Putnams Sons | Writing Group Name: Stratford-on-Odeon
+
+Book Title: A Moveable Feast | Publisher Name: J.B. Lippincott & Co. | Writing Group Name: Stratford-on-Odeon
+
+Book Title: Cardcaptor Sakura | Publisher Name: Viz Media | Writing Group Name: Clamp
+
+Book Title: The Sun Also Rises | Publisher Name: J.B. Lippincott & Co. | Writing Group Name: Stratford-on-Odeon
+
+Book Title: The Wild West | Publisher Name: G. P. Putnams Sons | Writing Group Name: Stratford-on-Odeon
+
+Book Title: Ohio | Publisher Name: Viz Media | Writing Group Name: Stratford-on-Odeon
+
+Book Title: Detective Conan | Publisher Name: Viz Media | Writing Group Name: Clamp
+
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+6
+All the book titles and writing group:
+* Title:Cardcaptor Sakura| Writing Group:Clamp
+
+* Title:Detective Conan| Writing Group:Clamp
+
+* Title:A Moveable Feast| Writing Group:Stratford-on-Odeon
+
+* Title:Farewell to Arms| Writing Group:Stratford-on-Odeon
+
+* Title:Ohio| Writing Group:Stratford-on-Odeon
+
+* Title:The Old Man And The Sea| Writing Group:Stratford-on-Odeon
+
+* Title:The Sun Also Rises| Writing Group:Stratford-on-Odeon
+
+* Title:The Wild West| Writing Group:Stratford-on-Odeon
+
+* Title:A Boy Will| Writing Group:The Dymock Poets
+
+* Title:New Hampshire| Writing Group:The Dymock Poets
+
+Which book would you like all the data for?
+qweqasd
+
+Error: Your book title does not exist in the database. Please enter again or type -1 to exit
+
+Sakura
+
+Error: Your book title does not exist in the database. Please enter again or type -1 to exit
+
+Cardcaptor Sakura
+What is the group name for that book?
+sada
+
+Error: Your group name does not exist in the database. Please enter again or type -1 to exit
+
+The Dymock Poets
+
+Error: Your book Cardcaptor Sakura written by The Dymock Poets does not exist in the database. Please enter again or type -1 to exit
+
+What is the name of the book you would like to insert ?
+Cardcaptor Sakura
+What is the group name for that book ?
+Clamp
+The data of the Book Cardcaptor Sakura that you want:
+Book Title: Cardcaptor Sakura | Year Published: 1999 | Page Number: 52 | Publisher Name: Viz Media | Publisher Address: 1355 Market St #200, San Francisco, CA 94103 | Publisher Phone: (415) 546-7073 | Publisher Email: sjsupport@viz.com | Writing Group Name: Clamp | Head Writer: Nanase Ohkawa | Year Formed: 1987 | Subject: Manga
+
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+7
+What is the name of the book you would like to insert?
+The Wonderful Life
+The Names of all Writing Group:
+*Clamp
+
+*Stratford-on-Odeon
+
+*The Bloomsbury Group
+
+*The Dymock Poets
+
+What is the group name for that book?
+da
+
+Error: Your group name does not exist in the database. Please enter again or type -1 to exit
+
+The Bloomsbury Group
+The Names of all Publishers:
+*Bloomsbury Publishing
+
+*G. P. Putnams Sons
+
+*J.B. Lippincott & Co.
+
+*Kodansha
+
+*Scholastic Corporation
+
+*Shueisha
+
+*Viz Media
+
+What is the publisher for that book?
+asd
+
+Error: Your publisher name does not exist in the database. Please enter again or type -1 to exit
+
+Scholastic Corporation
+What is the year that this book was published ?
+-9596
+Your input is not an approriate integer, Please try again:
+1965
+How many number of pages does this book have ?
+-562
+Your input is not an approriate integer, Please try again:
+asd
+Your input is not an approriate integer, Please try again:
+152
+This book has been successfully added into the database!
+
+The current books in the database:
+
+Writing Group Name: Stratford-on-Odeon | Book Title: The Old Man And The Sea | Publisher Name: J.B. Lippincott & Co. | Year Published: 1952 | Page Number: 127
+
+Writing Group Name: The Dymock Poets | Book Title: A Boy Will | Publisher Name: G. P. Putnams Sons | Year Published: 1913 | Page Number: 130
+
+Writing Group Name: The Dymock Poets | Book Title: New Hampshire | Publisher Name: Viz Media | Year Published: 1923 | Page Number: 75
+
+Writing Group Name: Stratford-on-Odeon | Book Title: Farewell to Arms | Publisher Name: G. P. Putnams Sons | Year Published: 1929 | Page Number: 360
+
+Writing Group Name: Stratford-on-Odeon | Book Title: A Moveable Feast | Publisher Name: J.B. Lippincott & Co. | Year Published: 1964 | Page Number: 250
+
+Writing Group Name: Clamp | Book Title: Cardcaptor Sakura | Publisher Name: Viz Media | Year Published: 1999 | Page Number: 52
+
+Writing Group Name: Stratford-on-Odeon | Book Title: The Sun Also Rises | Publisher Name: J.B. Lippincott & Co. | Year Published: 1926 | Page Number: 194
+
+Writing Group Name: Stratford-on-Odeon | Book Title: The Wild West | Publisher Name: G. P. Putnams Sons | Year Published: 1945 | Page Number: 156
+
+Writing Group Name: Stratford-on-Odeon | Book Title: Ohio | Publisher Name: Viz Media | Year Published: 1958 | Page Number: 156
+
+Writing Group Name: Clamp | Book Title: Detective Conan | Publisher Name: Viz Media | Year Published: 1998 | Page Number: 45
+
+Writing Group Name: The Bloomsbury Group | Book Title: The Wonderful Life | Publisher Name: Scholastic Corporation | Year Published: 1965 | Page Number: 152
+
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+8
+The Names of all existing Publishers that has published a book:
+*Bloomsbury Publishing
+
+*G. P. Putnams Sons
+
+*J.B. Lippincott & Co.
+
+*Kodansha
+
+*Scholastic Corporation
+
+*Shueisha
+
+*Viz Media
+
+Please Enter a new publisher name:
+Shueisha
+
+Error: Your publisher name already exists in the database. Please enter again or type -1 to exit
+
+Viz Media
+
+Error: Your publisher name already exists in the database. Please enter again or type -1 to exit
+
+Microsoft Education
+Enter publisher adress
+Way. Redmond. Washington. 98052-6399.
+publihser phone
+(800) 426-9400
+publisher email
+MSTF@outlook.com
+publisher to replace
+das
+
+Error: Your publisher name does not exist in the database. Please enter again or type -1 to exit
+
+J.B. Lippincott & Co.
+Publisher updated:
+Writing Group Name: Stratford-on-Odeon | Book Title: The Old Man And The Sea | Publisher Name: Microsoft Education | Year Published: 1952 | Page Number: 127
+
+Writing Group Name: Stratford-on-Odeon | Book Title: A Moveable Feast | Publisher Name: Microsoft Education | Year Published: 1964 | Page Number: 250
+
+Writing Group Name: Stratford-on-Odeon | Book Title: The Sun Also Rises | Publisher Name: Microsoft Education | Year Published: 1926 | Page Number: 194
+
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+9
+All the book titles and writing group:
+* Title:Cardcaptor Sakura| Writing Group:Clamp
+
+* Title:Detective Conan| Writing Group:Clamp
+
+* Title:A Moveable Feast| Writing Group:Stratford-on-Odeon
+
+* Title:Farewell to Arms| Writing Group:Stratford-on-Odeon
+
+* Title:Ohio| Writing Group:Stratford-on-Odeon
+
+* Title:The Old Man And The Sea| Writing Group:Stratford-on-Odeon
+
+* Title:The Sun Also Rises| Writing Group:Stratford-on-Odeon
+
+* Title:The Wild West| Writing Group:Stratford-on-Odeon
+
+* Title:The Wonderful Life| Writing Group:The Bloomsbury Group
+
+* Title:A Boy Will| Writing Group:The Dymock Poets
+
+* Title:New Hampshire| Writing Group:The Dymock Poets
+
+What is the name of the book you would like to Remove?
+dasd
+
+Error: Your book name does not exist in the database. Please enter again or type -1 to exit
+
+Detective Conan
+The Names of all Writing Group:
+*Clamp
+
+*Stratford-on-Odeon
+
+*The Bloomsbury Group
+
+*The Dymock Poets
+
+What is the group name for that book?
+Clamp
+Book Detective Conan, written by Clamp was deleted!!!
+
+The remaining books:
+
+Writing Group Name: Stratford-on-Odeon | Book Title: The Old Man And The Sea | Publisher Name: Microsoft Education | Year Published: 1952 | Page Number: 127
+
+Writing Group Name: The Dymock Poets | Book Title: A Boy Will | Publisher Name: G. P. Putnams Sons | Year Published: 1913 | Page Number: 130
+
+Writing Group Name: The Dymock Poets | Book Title: New Hampshire | Publisher Name: Viz Media | Year Published: 1923 | Page Number: 75
+
+Writing Group Name: Stratford-on-Odeon | Book Title: Farewell to Arms | Publisher Name: G. P. Putnams Sons | Year Published: 1929 | Page Number: 360
+
+Writing Group Name: Stratford-on-Odeon | Book Title: A Moveable Feast | Publisher Name: Microsoft Education | Year Published: 1964 | Page Number: 250
+
+Writing Group Name: Clamp | Book Title: Cardcaptor Sakura | Publisher Name: Viz Media | Year Published: 1999 | Page Number: 52
+
+Writing Group Name: Stratford-on-Odeon | Book Title: The Sun Also Rises | Publisher Name: Microsoft Education | Year Published: 1926 | Page Number: 194
+
+Writing Group Name: Stratford-on-Odeon | Book Title: The Wild West | Publisher Name: G. P. Putnams Sons | Year Published: 1945 | Page Number: 156
+
+Writing Group Name: Stratford-on-Odeon | Book Title: Ohio | Publisher Name: Viz Media | Year Published: 1958 | Page Number: 156
+
+Writing Group Name: The Bloomsbury Group | Book Title: The Wonderful Life | Publisher Name: Scholastic Corporation | Year Published: 1965 | Page Number: 152
+
+-----Please select one of the following choices:-----
+
+1) List all writing groups
+2) List all the data for a specified writing group.
+3) List all publishers.
+4) List all the data for a publisher specified by...?
+5) List all book titles.
+6) List all the data for a book specified by....
+7) Insert a new book.
+8) Insert a new publisher (this will update all books published by this person)
+9) Remove a book.
+10) Quit
+10
+BUILD SUCCESSFUL (total time: 5 minutes 28 seconds)

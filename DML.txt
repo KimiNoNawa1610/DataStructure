@@ -1,0 +1,111 @@
+-- Populate table Sport
+INSERT INTO Sport (sportName)
+VALUE ('Soccer'),
+	  ('BaseBall'),
+      ('Swimming'),
+      ('Archery');
+      
+-- Populate table Player
+INSERT INTO Player (playerID, pLastName, pFirstName, pDateOfBirth, dateJoined, pEmail)
+VALUE (1,'Vo','Nhan','2000-10-16','2021-5-5','Nhan.Vo@student.csulb.edu'),
+	  (2,'Hammound','Amir','1999-12-12','2010-5-6','A.M@gmail.com'),
+      (3,'Ormeno','Brandon','1997-2-15','2010-6-7','BO@gmail.com'),
+      (4,'Proeung','Setha','2001-5-7','2011-5-7','SP@gmail.com');
+
+-- Populate table Coach
+INSERT INTO Coach(employeeID,cLastName,cFirstName,coachEmail)
+VALUES (1,'Winter','Dave','DW@csulb.edu'),
+	   (2,'Beckham','David','BD@gmail.com'),
+       (3,'Lombardi','Vince','LV@gmail.com'),
+       (4,'Shula','Don','SD@gmail.com'),
+       (5,'Beane','Billy','BB@gmail.com'),
+       (6,'David','Osama','DO@csulb.edu'),
+	   (7,'Saenai','Hero','SH@gmail.com');
+
+
+-- Populate table skill
+INSERT INTO skill(skillName)
+VALUE ('patience'),
+      ('dignity'),
+      ('discipline'),
+      ('coordination'),
+      ('stamina'),
+      ('leadership'),
+      ('strength'),
+      ('speed');
+
+
+-- Populate table coachskill
+INSERT INTO coachskill(employeeID,SkillName)
+VALUES (1,'discipline'),
+	   (1,'coordination'),
+       (1,'strength'),
+       (1,'speed'),
+       (1,'stamina'),
+       
+       (2,'dignity'),
+       (2,'stamina'),
+       (2,'discipline'),
+       (2,'strength'),
+       (2,'patience'),
+       
+       (3,'speed'),
+       (3,'coordination'),
+       (3,'patience'),
+       (3,'dignity'),
+       (3,'leadership'),
+       
+       (4,'speed'),
+       (4,'coordination'),
+       (4,'patience'),
+       (4,'dignity'),
+       (4,'leadership'),
+       
+       (5,'speed'),
+       (5,'coordination'),
+       (5,'patience'),
+       (5,'dignity'),
+       (5,'leadership'),
+       
+       (6,'speed'),
+       (6,'coordination'),
+       (6,'patience'),
+       (6,'dignity'),
+       (6,'leadership'),
+       
+       (7,'discipline'),
+	   (7,'coordination'),
+       (7,'strength'),
+       (7,'speed'),
+       (7,'stamina');
+
+-- Populate table headcoach
+INSERT INTO headcoach(employeeID,headLineSkill)
+VALUES (1,'stamina'),
+	   (5,'leadership'),
+       (6,'leadership'),
+       (7,'stamina');
+
+-- Populate table assistantcoach
+INSERT INTO assistantcoach(employeeID,Mentor)
+VALUES (3,1),
+	   (2,3),
+       (4,5);
+
+-- Populate table sportcoach
+INSERT INTO sportcoach(sportName,employeeID)
+VALUES ('Soccer',2),
+	   ('BaseBall',3),
+       ('Swimming',4),
+       ('Archery',5),
+       ('Soccer',1),
+       ('BaseBall',2);
+
+-- Populate table sportplayer
+INSERT INTO sportplayer(playerID,sportName,employeeID)
+VALUES (2,'Archery',5),
+	   (1,'Archery',5),
+	   (3,'Soccer',1),
+       (4,'Soccer',1),
+       (1,'Soccer',1),
+       (2,'Soccer',1);

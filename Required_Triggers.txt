@@ -1,0 +1,47 @@
+/*1.	No player can receive coaching in more than three sports.*/
+CREATE DEFINER=`cecs323sec4s77`@`10.%` TRIGGER `sportplayer_BEFORE_INSERT` BEFORE INSERT ON `sportplayer` FOR EACH ROW BEGIN
+	DECLARE COUCH_COUNT INT;
+    SELECT COUNT(DISTINCT employeeID) INTO COUCH_COUNT FROM SportPlayer WHERE playerID=NEW.playerID;
+    IF(COUCH_COUNT >= 3 ) THEN
+		SIGNAL SQLSTATE '40000'
+		SET MESSAGE_TEXT='A player cannot be coached in more then 3 sport';
+    END IF;
+    
+    IF NEW.spFirstName IS NULL or NEW.spFirstName=''THEN
+		 SET NEW.spFirstName=(SELECT pFirstName FROM player WHERE player.playerID=new.playerID);
+	END IF;
+    
+	IF NEW.spLastName IS NULL or NEW.spLastName='' THEN
+         SET NEW.spLastName=(SELECT pLastName FROM player WHERE player.playerID=new.playerID);
+    END IF;
+END
+
+
+/*2.	If we remove a skill from a coach, that coach must still have at least two skills.*/
+
+CREATE DEFINER=`cecs323sec4s77`@`10.%` PROCEDURE `Skill_check`(employeeID_s int)
+BEGIN
+	DECLARE COUNT_SKILL INT;
+    SELECT COUNT(DISTINCT SkillName) INTO COUNT_SKILL FROM CoachSkill WHERE employeeID=employeeID_s;
+    IF(COUNT_SKILL <3) THEN
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT='CANNOT DELETE SKILL FROM A COACH WHO HAS LESS THEN 3 skills';
+    END IF;
+END
+
+CREATE DEFINER=`cecs323sec4s77`@`10.%` TRIGGER `coachskill_BEFORE_UPDATE` BEFORE UPDATE ON `coachskill` FOR EACH ROW BEGIN
+	call Skill_check(OLD.employeeID);
+END
+
+CREATE DEFINER=`cecs323sec4s77`@`10.%` TRIGGER `coachskill_BEFORE_DELETE` BEFORE DELETE ON `coachskill` FOR EACH ROW BEGIN
+	call Skill_check(OLD.employeeID);
+END
+
+/*3.	Players must be at least ten years of age before they can join our coaching clinic.*/
+
+CREATE DEFINER=`cecs323sec4s77`@`10.%` TRIGGER `player_BEFORE_INSERT` BEFORE INSERT ON `player` FOR EACH ROW BEGIN
+	IF(datediff(NEW.dateJoined,NEW.pDateofBirth)<3650) THEN
+		SIGNAL SQLSTATE '46000'
+		SET MESSAGE_TEXT='PLAYER NEED TO BE AT LEAST 10 YEARS OLD';
+    END IF;
+END

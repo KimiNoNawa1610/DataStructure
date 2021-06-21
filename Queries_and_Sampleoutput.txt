@@ -1,0 +1,57 @@
+/*
+1.	List all of the headline skills that are shared by two or more coaches, and list the names of the coaches who have that skill.  
+One row of output for each skill.  List the headline skills in alphabetical order.
+*/
+SELECT headlineSkill, GROUP_CONCAT( CONCAT(cFirstName,' ', cLastName) SEPARATOR ', ') AS COACH_NAME FROM headcoach INNER JOIN coach USING(employeeID) 
+WHERE headlineSkill IN (SELECT headlineSkill FROM headcoach GROUP BY (headlineSkill) HAVING count(employeeID)>=2) GROUP BY headlineSkill ORDER BY headlineSkill;
+/* Sample output:
+
+headlineSkill  |	COACH_NAME
+------------------------------------------------
+leadership     |        Billy Beane, Osama David
+stamina	       |        Dave Winter, Hero Saenai
+
+*/
+
+
+/*
+2.	List each assistant coach’s first name, last name, their mentor’s first name, last name, and any skills that the two coaches have in common.  
+One row of output for each assistant coach.  List the assistant coaches sorted by last name, then their first name.
+*/
+SELECT AC.cFirstName, AC.cLastName, CONCAT(M.cFirstName,' ', M.cLastName) AS MENTOR, group_concat(ACS.skillName) AS similar_skill FROM assistantcoach 
+INNER JOIN Coach AC ON AC.employeeID=assistantcoach.employeeID 
+INNER JOIN headcoach ON assistantcoach.mentor=headcoach.employeeID
+INNER JOIN Coach M ON headcoach.employeeID=M.employeeID
+INNER JOIN coachskill ACS ON AC.employeeID=ACS.employeeID
+INNER JOIN coachskill MCS ON M.employeeID=MCS.employeeID
+WHERE ACS.skillName=MCS.skillName
+GROUP BY AC.cFirstName, AC.cLastName ORDER BY AC.cLastName, AC.cFirstName;
+/*Sample output:
+
+cFirstName  |   cLastName   |	 MENTOR	       |    similar_skill
+--------------------------------------------------------------------------------------------------
+Vince	    |   Lombardi    |    Dave Winter   |    coordination,speed
+Don	    |   Shula	    |    Billy Beane   |    coordination,dignity,leadership,patience,speed
+
+*/
+
+
+/*
+3.	For each player, list their first name and last name, each sport that we coach them in, and the coach’s first name and last name.  
+One row of output for each player.  List them by their last name, then their first name.
+*/
+SELECT player.pFirstName, player.pLastName, GROUP_CONCAT( CONCAT(cFirstName,' ', cLastName) SEPARATOR ', ') AS COACH_NAME, 
+GROUP_CONCAT(sportName  SEPARATOR ', ') AS SPORT FROM sportplayer INNER JOIN coach USING(employeeID)
+INNER JOIN player USING(playerID)
+GROUP BY player.pFirstName, player.pLastName
+ORDER BY player.pLastName,player.pFirstName;
+/*Sample output:
+
+pFirstName  |   pLastName   |	  COACH_NAME	             |    SPORT
+---------------------------------------------------------------------------------
+Amir	    |   Hammound    |	  Dave Winter, Billy Beane   |	  Soccer, Archery
+Brandon	    |   Ormeno	    |     Dave Winter	             |    Soccer
+Setha	    |   Proeung	    |     Dave Winter	             |    Soccer
+Nhan	    |   Vo	    |     Dave Winter, Billy Beane   |	  Soccer, Archery
+
+*/

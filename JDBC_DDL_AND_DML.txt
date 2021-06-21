@@ -1,0 +1,63 @@
+--WritingGroup table, each writing group has a unique name as a primary key and a head writer
+CREATE TABLE WritingGroup(
+    GroupName VARCHAR(100),--GroupName is the primary key of the writing group. Every writing group should have a unique name
+    HeadWriter VARCHAR(50),-- HeadWriter is the main author incharge of the writing group
+    YearFormed INT,--YearFormed is the year that a writing group is established
+    Subject VARCHAR(100),-- Subject represents the categories that a writing group want to write about
+
+    CONSTRAINT PK_WG PRIMARY KEY (GroupName)--Primary Key Constraint (GroupName) of a writing group
+);
+
+--Publisher table represents the publisher of a book, each publisher has a unique name
+CREATE TABLE Publisher(
+    PublisherName VARCHAR(100),--PublisherName is the name of a publisher which is unique
+    PublisherAddress VARCHAR(100),--PublisherAddress is the address of a publisher 
+    PublisherPhone VARCHAR(50),--PublisherPhone is the phone number of a publisher
+    PublisherEmail VARCHAR(100),--PublisherEmail is the email of the publisher
+
+    CONSTRAINT PK_Pub PRIMARY KEY (PublisherName)--Primary Key Constraint (PublisherName) of a publisher
+);
+
+--Book table represents a book which has a unique title and writing group.
+CREATE TABLE Book(
+    GroupName VARCHAR(100),--The name of the writing group who created the book
+    BookTitle VARCHAR(100),-- The title of the book. This should be unique
+    PublisherName VARCHAR(100),--The Publisher name who published the book
+    YearPublished INT,-- The year when the book is published
+    NumberPages INT,-- Number of pages in a book
+
+    CONSTRAINT FK_Book1 FOREIGN KEY (GroupName) REFERENCES WritingGroup(GroupName),-- The Writing group foreign Key constraint to make sure the book was created by a writing group that exists in the database
+    CONSTRAINT FK_Book2 FOREIGN KEY (PublisherName) REFERENCES Publisher(PublisherName),-- The Publisher foreign Key constraint to make sure the book's publisher exists inside the database
+    CONSTRAINT PK_Book PRIMARY KEY (GroupName, BookTitle),-- Primary Key constraint for a book which is the writing group name and a book title
+    CONSTRAINT CK_Book UNIQUE(BookTitle, PublisherName)-- Candidate Key constraint for a book which should be a unique combination of the book title and Publisher name.
+);
+
+--Populate WRITINGGROUP TABLE
+INSERT INTO WRITINGGROUP(GROUPNAME,HEADWRITER,YEARFORMED,SUBJECT)
+VALUES ('Clamp','Nanase Ohkawa',1987,'Manga'),
+       ('Stratford-on-Odeon','Ernest Hemingway',1882,'Modern Literature'),
+       ('The Dymock Poets','Robert Frost',1911,'Poetry'),
+       ('The Bloomsbury Group','Virginia Woolf',1980,'Women');
+
+--POPULATE PUBLISHER TABLE
+INSERT INTO PUBLISHER (PUBLISHERNAME, PUBLISHERADDRESS, PUBLISHERPHONE, PUBLISHEREMAIL) 
+	VALUES ('Kodansha', '2-12-21 Otowa,Bunkyo-ku Tokyo 112-8001 Japan', '+81(3)5395-3576', 'janedoe@kodansha.co.jp'),
+               ('J.B. Lippincott & Co.', '227 S. 6th Street Philadelphia, PA 72845', '(215) 732-6200', 'JBLip@gmail.com'),
+               ('G. P. Putnams Sons', '375 Hudson Street New York, NY 10014', '212-366-2000', 'janedoe@penguinputnam.com'),
+               ('Viz Media', '1355 Market St #200, San Francisco, CA 94103', '(415) 546-7073', 'sjsupport@viz.com'),
+               ('Shueisha', '3-13-10 Ginza, Chuo-ku, Tokyo 104-8003', '+81-3-3545-7111', 'info@toyokeizai.co.jp'),
+               ('Scholastic Corporation', '3010 Wilshire Blvd #258, Los Angeles, CA 90010', '1 (866) 233-1692', 'ScC@gmail.com'),
+               ('Bloomsbury Publishing', '1385 Broadway, 5th Floor, New York, NY 10018', '+44 (0) 20 7631 5600', 'BP@gmail.com');
+
+--POPULATE BOOK TABLE
+INSERT INTO BOOK (GROUPNAME, BOOKTITLE, PUBLISHERNAME, YEARPUBLISHED, NUMBERPAGES) 
+	VALUES ('Stratford-on-Odeon', 'The Old Man And The Sea', 'J.B. Lippincott & Co.', 1952, 127),
+               ('The Dymock Poets', 'A Boy Will', 'G. P. Putnams Sons', 1913, 130),
+               ('The Dymock Poets', 'New Hampshire', 'Viz Media', 1923, 75),
+               ('Stratford-on-Odeon', 'Farewell to Arms', 'G. P. Putnams Sons', 1929, 360),
+               ('Stratford-on-Odeon', 'A Moveable Feast', 'J.B. Lippincott & Co.', 1964, 250),
+               ('Clamp', 'Cardcaptor Sakura', 'Viz Media', 1999, 52),
+               ('Stratford-on-Odeon', 'The Sun Also Rises', 'J.B. Lippincott & Co.', 1926, 194),
+               ('Stratford-on-Odeon', 'The Wild West', 'G. P. Putnams Sons', 1945, 156),
+               ('Stratford-on-Odeon', 'Ohio', 'Viz Media', 1958, 156),
+               ('Clamp', 'Detective Conan', 'Viz Media', 1998, 45);
